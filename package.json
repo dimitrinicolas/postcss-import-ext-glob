@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "ava": "^0.25.0",
+    "ava-postcss-tester": "^1.0.0",
     "babel-eslint": "^8.2.6",
     "clean-publish": "^1.0.9",
     "coveralls": "^3.0.2",
