@@ -1,10 +1,10 @@
 # postcss-import-ext-glob [![Build Status][travis badge]][travis link] [![Coverage Status][coveralls badge]][coveralls link]
 
-A [PostCSS][postcss] plugin to extend [postcss-import][postcss-import] path
-resolver to allow [glob][glob ref] usage as path.
+A [PostCSS][postcss] plugin to extend [postcss-import][postcss-import] path 
+resolver to allow [glob][glob ref] usage as a path.
 
-You must use this plugin along with [postcss-import][postcss-import], place this
-plugin **before** `postcss-import`.
+You must use this plugin along with [postcss-import][postcss-import], place 
+this plugin **before** `postcss-import`.
 
 ```pcss
 @import-glob "components/**/*.css";
@@ -26,7 +26,7 @@ postcss([
 ]);
 ```
 
-Check out [PostCSS](https://github.com/postcss/postcss) docs for the complete
+Check out [PostCSS](https://github.com/postcss/postcss) docs for the complete 
 installation.
 
 ### Example
@@ -71,10 +71,12 @@ The sort order is by default ascending.
 
 ## Related
 
-- [postcss-import][postcss-import] - PostCSS plugin to inline @import rules
+- [postcss-import][postcss-import] - PostCSS plugin to inline @import rules 
 content
 - [fast-glob][fast-glob] - Module used for getting glob entries
 - [fast-sort][fast-sort] - Module used for sorting glob entries
+- [ava-postcss-tester][ava-postcss-tester] - Simply test your PostCSS plugin 
+with AVA
 
 ## License
 
@@ -89,5 +91,6 @@ This project is licensed under the [MIT license](LICENSE).
 [postcss-import]: https://github.com/postcss/postcss-import
 [fast-glob]: https://www.npmjs.com/package/fast-glob
 [fast-sort]: https://www.npmjs.com/package/fast-sort
+[ava-postcss-tester]: https://github.com/dimitrinicolas/ava-postcss-tester
 
 [glob ref]: https://en.wikipedia.org/wiki/Glob_(programming)
