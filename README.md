@@ -6,7 +6,7 @@ resolver to allow [glob][glob ref] usage as path.
 You must use this plugin along with [postcss-import][postcss-import], place this
 plugin **before** `postcss-import`.
 
-```scss
+```pcss
 @import-glob "components/**/*.css";
 ```
 
@@ -33,13 +33,13 @@ installation.
 
 This plugin transform this:
 
-```scss
+```pcss
 @import-glob "components/**/*.css";
 ```
 
 into this:
 
-```css
+```pcss
 @import "components/form/input.css";
 @import "components/form/submit.css";
 /* etc */
@@ -49,7 +49,7 @@ Thereby, the plugin `postcss-import` can now import each file.
 
 You can pass multiple globs in one:
 
-```scss
+```pcss
 @import-glob "helpers/**/*.css", "components/**/*.css";
 ```
 
