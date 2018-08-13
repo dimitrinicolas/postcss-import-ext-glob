@@ -12,8 +12,10 @@ const tester = new PostcssTester({
 });
 
 test('simple test', async t => {
-  const input = '@import-glob "fixtures/css/foo/**/*.css";';
-  const output = `
+  const input = /* scss */`
+    @import-glob "fixtures/css/foo/**/*.css";
+  `;
+  const output = /* scss */`
     @import "${__dirname}/fixtures/css/foo/bar.css";
     @import "${__dirname}/fixtures/css/foo/foo.css";
   `;
@@ -21,8 +23,10 @@ test('simple test', async t => {
 });
 
 test('simple test postcss-import', async t => {
-  const input = '@import-glob "fixtures/css/foo/**/*.css";';
-  const output = `
+  const input = /* scss */`
+    @import-glob "fixtures/css/foo/**/*.css";
+  `;
+  const output = /* scss */`
     .bar {
       display: inline-block;
     }
@@ -36,8 +40,10 @@ test('simple test postcss-import', async t => {
 });
 
 test('sort option', async t => {
-  const input = '@import-glob "fixtures/css/foo/**/*.css";';
-  const output = `
+  const input = /* scss */`
+    @import-glob "fixtures/css/foo/**/*.css";
+  `;
+  const output = /* scss */`
     .foo {
       display: block;
     }
@@ -54,11 +60,11 @@ test('sort option', async t => {
 });
 
 test('multiple globs', async t => {
-  const input = `
+  const input = /* scss */`
     @import-glob "fixtures/css/foo/**/*.css";
     @import-glob "fixtures/css/*.css";
   `;
-  const output = `
+  const output = /* scss */`
     .bar {
       display: inline-block;
     }
@@ -75,10 +81,10 @@ test('multiple globs', async t => {
 });
 
 test('multiple globs inline', async t => {
-  const input = `
+  const input = /* scss */`
     @import-glob "fixtures/css/foo/**/*.css", "fixtures/css/*.css";
   `;
-  const output = `
+  const output = /* scss */`
     .bar {
       display: inline-block;
     }
@@ -95,7 +101,9 @@ test('multiple globs inline', async t => {
 });
 
 test('error empty param test', async t => {
-  const input = '@import-glob';
+  const input = /* scss */`
+    @import-glob;
+  `;
   const output = new Error('No string found with rule @import-glob ');
   await tester.test(input, output, t, {
     pluginsAfter: [postcssImport]
