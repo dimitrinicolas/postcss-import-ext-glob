@@ -13,11 +13,11 @@ module.exports = postcss.plugin('postcss-import-ext-glob', (opts = {}) => {
     ? opts.sort
     : DEFAULT_SORTER;
 
-  return css => {
+  return (root, result) => {
     const promisesList = [];
 
-    css.walkAtRules('import-glob', rule => {
-      promisesList.push(new Promise((resolve, reject) => {
+    root.walkAtRules('import-glob', rule => {
+      promisesList.push(new Promise(resolve => {
         const globList = [];
         const params = valueParser(rule.params).nodes;
 
@@ -34,21 +34,30 @@ module.exports = postcss.plugin('postcss-import-ext-glob', (opts = {}) => {
         if (globList.length) {
           fg(globList)
             .then(entries => {
+              if (!entries.length) {
+                result.warn(
+                  `No file found for @import-glob ${rule.params}`,
+                  { node: rule }
+                );
+              }
+
               const sortedEntries = sort(entries)[sorter]();
 
               for (const entry of sortedEntries) {
-                css.insertBefore(rule, {
+                root.insertBefore(rule, {
                   name: 'import',
-                  params: `"${entry}"`
+                  params: `"${entry}"`,
+                  source: rule.source
                 });
               }
               rule.remove();
               resolve();
             });
         } else {
-          reject(new Error(
-            `No string found with rule @import-glob ${rule.params}`
-          ));
+          throw rule.error(
+            `No string found with rule @import-glob ${rule.params}`,
+            { plugin: 'postcss-import-ext-glob' }
+          );
         }
       }));
     });

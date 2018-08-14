@@ -104,8 +104,23 @@ test('error empty param test', async t => {
   const input = /* scss */`
     @import-glob;
   `;
-  const output = new Error('No string found with rule @import-glob ');
-  await tester.test(input, output, t, {
+  await tester.test(input, err => {
+    t.true(/No string found with rule @import-glob/.test(err));
+  }, t, {
+    pluginsAfter: [postcssImport]
+  });
+});
+
+test('no entries warning', async t => {
+  const warningsTester = new PostcssTester({
+    postcss,
+    plugin: postcssImportExtGlob,
+    tolerateWarnings: true
+  });
+  const input = /* scss */`
+    @import-glob "fixtures/css/_unknow/**/*.css";
+  `;
+  await warningsTester.test(input, '', t, {
     pluginsAfter: [postcssImport]
   });
 });

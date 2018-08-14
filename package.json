@@ -1,6 +1,6 @@
 {
   "name": "postcss-import-ext-glob",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A PostCSS plugin to extend postcss-import path resolver to allow glob usage as path",
   "license": "MIT",
   "main": "index.js",
@@ -17,14 +17,15 @@
     "postcss",
     "import",
     "extension",
-    "glob"
+    "glob",
+    "postcss-plugin"
   ],
   "bugs": {
     "url": "https://github.com/dimitrinicolas/postcss-import-ext-glob/issues"
   },
   "homepage": "https://github.com/dimitrinicolas/postcss-import-ext-glob",
   "scripts": {
-    "publish": "clean-publish --files fixtures",
+    "publish": "clean-publish --files .nyc_output coverage fixtures",
     "lint": "eslint **/*.js",
     "test": "nyc --reporter=lcov --reporter=text ava",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
@@ -37,10 +38,10 @@
     "clean-publish": "^1.0.9",
     "coveralls": "^3.0.2",
     "eslint": "^5.3.0",
-    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.10.0",
+    "eslint-plugin-react": "^7.11.1",
     "nodemon": "^1.18.3",
     "nyc": "^12.0.2",
     "postcss-import": "^12.0.0"
