@@ -19,7 +19,7 @@ $ npm install postcss-import-ext-glob
 ## Usage
 
 ```js
-// Postcss plugins
+// PostCSS plugins
 postcss([
   require('postcss-import-ext-glob'),
   require('postcss-import')
