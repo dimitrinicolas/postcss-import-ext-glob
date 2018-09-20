@@ -1,4 +1,5 @@
 # postcss-import-ext-glob [![Build Status][travis badge]][travis link] [![Coverage Status][coveralls badge]][coveralls link]
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdimitrinicolas%2Fpostcss-import-ext-glob.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdimitrinicolas%2Fpostcss-import-ext-glob?ref=badge_shield)
 
 A [PostCSS][postcss] plugin to extend [postcss-import][postcss-import] path 
 resolver to allow [glob][glob ref] usage as a path.
@@ -94,3 +95,6 @@ This project is licensed under the [MIT license](LICENSE).
 [ava-postcss-tester]: https://github.com/dimitrinicolas/ava-postcss-tester
 
 [glob ref]: https://en.wikipedia.org/wiki/Glob_(programming)
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdimitrinicolas%2Fpostcss-import-ext-glob.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdimitrinicolas%2Fpostcss-import-ext-glob?ref=badge_large)
