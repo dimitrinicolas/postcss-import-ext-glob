@@ -8,3 +8,5 @@ logs
 
 .nyc_output
 coverage
+
+.vscode

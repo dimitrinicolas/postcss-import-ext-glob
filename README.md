@@ -1,9 +1,9 @@
 # postcss-import-ext-glob [![Build Status][travis badge]][travis link] [![Coverage Status][coveralls badge]][coveralls link]
 
-A [PostCSS][postcss] plugin to extend [postcss-import][postcss-import] path 
+A [PostCSS][postcss] v8 plugin to extend [postcss-import][postcss-import] path
 resolver to allow [glob][glob ref] usage as a path.
 
-You must use this plugin along with [postcss-import][postcss-import], place 
+You must use this plugin along with [postcss-import][postcss-import], place
 this plugin **before** `postcss-import`.
 
 ```pcss
@@ -13,7 +13,7 @@ this plugin **before** `postcss-import`.
 ## Installation
 
 ```console
-$ npm install postcss-import-ext-glob
+$ npm install --save-dev postcss postcss-import postcss-import-ext-glob
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ postcss([
 ]);
 ```
 
-Check out [PostCSS](https://github.com/postcss/postcss) docs for the complete 
+Check out [PostCSS](https://github.com/postcss/postcss) docs for the complete
 installation.
 
 ### Example
@@ -71,7 +71,7 @@ The sort order is by default ascending.
 
 ## Related
 
-- [postcss-import][postcss-import] - PostCSS plugin to inline @import rules 
+- [postcss-import][postcss-import] - PostCSS plugin to inline @import rules
 content
 - [fast-glob][fast-glob] - Module used for getting glob entries
 - [fast-sort][fast-sort] - Module used for sorting glob entries

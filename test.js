@@ -1,49 +1,99 @@
-import test from 'ava';
-import PostcssTester from 'ava-postcss-tester';
+const test = require('ava');
+const PostcssTester = require('ava-postcss-tester');
 
-import postcss from 'postcss';
-import postcssImport from 'postcss-import';
+const postcss = require('postcss');
+const postcssImport = require('postcss-import');
 
-import postcssImportExtGlob from '.';
+const postcssImportExtGlob = require('.');
 
 const tester = new PostcssTester({
   postcss,
-  plugin: postcssImportExtGlob
+  plugin: postcssImportExtGlob,
 });
 
-test('simple test', async t => {
-  const input = /* scss */`
-    @import-glob "fixtures/css/foo/**/*.css";
+test('no @import-blog', async (t) => {
+  const input = `
+    @import "fixtures/css/foo/**/*.css";
   `;
-  const output = /* scss */`
-    @import "${__dirname}/fixtures/css/foo/bar.css";
-    @import "${__dirname}/fixtures/css/foo/foo.css";
+
+  const output = `
+    @import "fixtures/css/foo/**/*.css";
   `;
+
   await tester.test(input, output, t);
 });
 
-test('simple test postcss-import', async t => {
-  const input = /* scss */`
-    @import-glob "fixtures/css/foo/**/*.css";
+test('postcss-import test', async (t) => {
+  const input = `
+    @import "/Users/dimitrinicolas/Developer/postcss-import-ext-glob/fixtures/css/style.css";
   `;
-  const output = /* scss */`
-    .bar {
-      display: inline-block;
-    }
-    .foo {
-      display: block;
+
+  const output = `
+    div {
+      margin: auto;
     }
   `;
+
   await tester.test(input, output, t, {
-    pluginsAfter: [postcssImport]
+    pluginsAfter: [postcssImport],
   });
 });
 
-test('sort option', async t => {
-  const input = /* scss */`
+test('simple test', async (t) => {
+  const input = `
     @import-glob "fixtures/css/foo/**/*.css";
   `;
-  const output = /* scss */`
+
+  const output = `
+    @import "${__dirname}/fixtures/css/foo/bar.css";
+    @import "${__dirname}/fixtures/css/foo/foo.css";
+  `;
+
+  await tester.test(input, output, t);
+});
+
+test('only changing @import-glob at rules', async (t) => {
+  const input = `
+    @import "fixtures/css/foo/**/*.css";
+    @import-glob "fixtures/css/foo/**/*.css";
+    @media (max-width: 600px) { .foo { color: red; } }
+  `;
+
+  const output = `
+    @import "fixtures/css/foo/**/*.css";
+    @import "${__dirname}/fixtures/css/foo/bar.css";
+    @import "${__dirname}/fixtures/css/foo/foo.css";
+    @media (max-width: 600px) { .foo { color: red; } }
+  `;
+
+  await tester.test(input, output, t);
+});
+
+test('simple test postcss-import', async (t) => {
+  const input = `
+    @import-glob "fixtures/css/foo/**/*.css";
+  `;
+
+  const output = `
+    .bar {
+      display: inline-block;
+    }
+    .foo {
+      display: block;
+    }
+  `;
+
+  await tester.test(input, output, t, {
+    pluginsAfter: [postcssImport],
+  });
+});
+
+test('sort option', async (t) => {
+  const input = `
+    @import-glob "fixtures/css/foo/**/*.css";
+  `;
+
+  const output = `
     .foo {
       display: block;
     }
@@ -51,20 +101,22 @@ test('sort option', async t => {
       display: inline-block;
     }
   `;
+
   await tester.test(input, output, t, {
     pluginOptions: {
-      sort: 'desc'
+      sort: 'desc',
     },
-    pluginsAfter: [postcssImport]
+    pluginsAfter: [postcssImport],
   });
 });
 
-test('multiple globs', async t => {
-  const input = /* scss */`
+test('multiple globs', async (t) => {
+  const input = `
     @import-glob "fixtures/css/foo/**/*.css";
     @import-glob "fixtures/css/*.css";
   `;
-  const output = /* scss */`
+
+  const output = `
     .bar {
       display: inline-block;
     }
@@ -75,16 +127,18 @@ test('multiple globs', async t => {
       margin: auto;
     }
   `;
+
   await tester.test(input, output, t, {
-    pluginsAfter: [postcssImport]
+    pluginsAfter: [postcssImport],
   });
 });
 
-test('multiple globs inline', async t => {
-  const input = /* scss */`
+test('multiple globs inline', async (t) => {
+  const input = `
     @import-glob "fixtures/css/foo/**/*.css", "fixtures/css/*.css";
   `;
-  const output = /* scss */`
+
+  const output = `
     .bar {
       display: inline-block;
     }
@@ -95,32 +149,39 @@ test('multiple globs inline', async t => {
       margin: auto;
     }
   `;
+
   await tester.test(input, output, t, {
-    pluginsAfter: [postcssImport]
+    pluginsAfter: [postcssImport],
   });
 });
 
-test('error empty param test', async t => {
-  const input = /* scss */`
+test('error empty param test', async (t) => {
+  const input = `
     @import-glob;
   `;
-  await tester.test(input, err => {
-    t.true(/No string found with rule @import-glob/.test(err));
-  }, t, {
-    pluginsAfter: [postcssImport]
-  });
+
+  await tester.test(
+    input,
+    (err) => {
+      t.true(/No string found with rule @import-glob/.test(err));
+    },
+    t,
+    {
+      pluginsAfter: [postcssImport],
+    }
+  );
 });
 
-test('no entries warning', async t => {
+test('no entries warning', async (t) => {
   const warningsTester = new PostcssTester({
     postcss,
     plugin: postcssImportExtGlob,
-    tolerateWarnings: true
+    tolerateWarnings: true,
   });
-  const input = /* scss */`
+  const input = `
     @import-glob "fixtures/css/_unknow/**/*.css";
   `;
   await warningsTester.test(input, '', t, {
-    pluginsAfter: [postcssImport]
+    pluginsAfter: [postcssImport],
   });
 });

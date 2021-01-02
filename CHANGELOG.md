@@ -3,6 +3,10 @@
 This project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 2.0.0 - 2021-01-02
+### Breaking
+- Upgrade to PostCSS v8.
+
 ## 1.1.0 - 2018-08-15
 ### Added
 - Source for new nodes to generate an accurate source map.
