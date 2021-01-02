@@ -23,22 +23,6 @@ test('no @import-blog', async (t) => {
   await tester.test(input, output, t);
 });
 
-test('postcss-import test', async (t) => {
-  const input = `
-    @import "/Users/dimitrinicolas/Developer/postcss-import-ext-glob/fixtures/css/style.css";
-  `;
-
-  const output = `
-    div {
-      margin: auto;
-    }
-  `;
-
-  await tester.test(input, output, t, {
-    pluginsAfter: [postcssImport],
-  });
-});
-
 test('simple test', async (t) => {
   const input = `
     @import-glob "fixtures/css/foo/**/*.css";
