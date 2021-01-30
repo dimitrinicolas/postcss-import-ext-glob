@@ -1,6 +1,6 @@
 {
   "name": "postcss-import-ext-glob",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A PostCSS plugin to extend postcss-import path resolver to allow glob usage as path",
   "license": "MIT",
   "main": "index.js",

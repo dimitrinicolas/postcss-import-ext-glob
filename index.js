@@ -29,7 +29,9 @@ module.exports = (opts = {}) => {
 
             for (const param of params) {
               if (param.type === 'string') {
-                globList.push(path.join(dirName, param.value));
+                globList.push(
+                  path.join(dirName, param.value).replace(/\\/g, '/')
+                );
               }
             }
 

@@ -3,6 +3,10 @@
 This project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 2.0.1 - 2021-01-31
+### Fixed
+- Fixed an issue with glob path when running on Windows.
+
 ## 2.0.0 - 2021-01-02
 ### Breaking
 - Upgrade to PostCSS v8.
