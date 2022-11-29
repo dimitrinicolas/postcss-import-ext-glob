@@ -169,3 +169,16 @@ test('no entries warning', async (t) => {
     pluginsAfter: [postcssImport],
   });
 });
+
+test('layer test', async (t) => {
+  const input = `
+    @import-glob "fixtures/css/foo/**/*.css" layer(test);
+  `;
+
+  const output = `
+    @import "${__dirname}/fixtures/css/foo/bar.css" layer(test);
+    @import "${__dirname}/fixtures/css/foo/foo.css" layer(test);
+  `;
+
+  await tester.test(input, output, t);
+});

@@ -19,6 +19,7 @@ module.exports = (opts = {}) => {
         promisesList.push(
           new Promise((resolve) => {
             const globList = [];
+            let layer = new Map();
 
             const params = valueParser(rule.params).nodes;
 
@@ -33,6 +34,9 @@ module.exports = (opts = {}) => {
                   path.join(dirName, param.value).replace(/\\/g, '/')
                 );
               }
+              if (param.type === 'function' && param.value === 'layer') {
+                layer.set(dirName, param.nodes[0].value)
+              }
             }
 
             if (globList.length) {
@@ -46,10 +50,11 @@ module.exports = (opts = {}) => {
                 const sortedEntries = sort(entries)[sorter]();
 
                 sortedEntries.forEach((entry) => {
+                  let paramValue = layer.get(dirName) ? `"${entry}" layer(${layer.get(dirName)})` : `"${entry}"`
                   rule.before(
                     new AtRule({
                       name: 'import',
-                      params: `"${entry}"`,
+                      params: paramValue,
                       source: rule.source,
                     })
                   );
