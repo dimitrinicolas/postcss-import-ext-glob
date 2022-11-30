@@ -3,6 +3,10 @@
 This project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 2.1.0 - 2022-11-30
+### Added
+- Adds the possibility to define layer parameters to the import rule, thanks to @argyleink. See issue #3
+
 ## 2.0.1 - 2021-01-31
 ### Fixed
 - Fixed an issue with glob path when running on Windows.
