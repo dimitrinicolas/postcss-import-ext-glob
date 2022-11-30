@@ -2,7 +2,7 @@ const valueParser = require('postcss-value-parser');
 
 const path = require('path');
 const fg = require('fast-glob');
-const sort = require('fast-sort');
+const { sort } = require('fast-sort');
 
 const SORTERS = ['asc', 'desc'];
 const DEFAULT_SORTER = 'asc';

@@ -29,21 +29,21 @@
     "dev": "nodemon -e js -x \"npm run test\""
   },
   "dependencies": {
-    "fast-glob": "^3.2.4",
-    "fast-sort": "^2.2.0",
-    "postcss-value-parser": "^4.1.0"
+    "fast-glob": "^3.2.12",
+    "fast-sort": "^3.2.0",
+    "postcss-value-parser": "^4.2.0"
   },
   "devDependencies": {
-    "ava": "^3.15.0",
+    "ava": "^5.1.0",
     "ava-postcss-tester": "^1.1.1",
     "babel-eslint": "^10.1.0",
-    "clean-publish": "^1.1.8",
-    "coveralls": "^3.1.0",
-    "eslint": "^7.17.0",
-    "nodemon": "^2.0.6",
+    "clean-publish": "^4.0.1",
+    "coveralls": "^3.1.1",
+    "eslint": "^8.28.0",
+    "nodemon": "^2.0.20",
     "nyc": "^15.1.0",
-    "postcss": "^8.2.2",
-    "postcss-import": "^14.0.0"
+    "postcss": "^8.4.19",
+    "postcss-import": "^15.0.0"
   },
   "peerDependencies": {
     "postcss": "^8.2.0"
