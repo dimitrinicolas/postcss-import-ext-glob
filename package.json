@@ -1,6 +1,6 @@
 {
   "name": "postcss-import-ext-glob",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A PostCSS plugin to extend postcss-import path resolver to allow glob usage as path",
   "license": "MIT",
   "main": "index.js",
@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/dimitrinicolas/postcss-import-ext-glob",
   "scripts": {
-    "publish": "clean-publish --files .nyc_output coverage fixtures",
     "lint": "eslint **/*.js",
     "test": "nyc --reporter=lcov --reporter=text ava",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
@@ -37,7 +36,6 @@
     "ava": "^5.1.0",
     "ava-postcss-tester": "^1.1.1",
     "babel-eslint": "^10.1.0",
-    "clean-publish": "^4.0.1",
     "coveralls": "^3.1.1",
     "eslint": "^8.28.0",
     "nodemon": "^2.0.20",
